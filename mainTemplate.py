@@ -9,7 +9,7 @@ def writeDigit(number, x=1):#Displays a digit on the microbit
     elif(x == 3):
         x1, x2 = 3,4
     if(number == '-'):
-        display.set_pixel(0, 2, brightness-2)
+        display.set_pixel(0, 2, brightness)
     elif(number == 0):
         for n in range(0, 5):
             display.set_pixel(x1, n, brightness)
@@ -101,9 +101,8 @@ TEMPERATURE = 0
 CONDITION = 1
 RAIN = 2
 
-#REPLACELINE
-#The line above is replaced by the dictionary made in scraper.py
-brightness = 7#The level of brightness the numbers and symbols will be displayed at (1-9)
+#REPLACEDICT
+#REPLACEBRIGHTNESS
 lowestHour = min(list(weatherDict))
 highestHour = 23
 mode = TEMPERATURE#Chooses whether to display the temperature, condition, or rain chance

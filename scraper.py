@@ -2,7 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import uflash
 import os
+import json
 
+with open('config.json', 'r') as file:
+    config = json.loads(file.read())
 rainList = ['Rain', 'Scattered Showers', 'Heavy Rain']
 sunList = []
 cloudList = ['Foggy', 'Cloudy', 'Mostly Cloudy Night']
@@ -13,7 +16,8 @@ temperatureClass = "DetailsSummary--tempValue--1K4ka"
 rainClass = "DetailsSummary--precip--1ecIJ"
 conditionClass = "DetailsSummary--condition--24gQw"
 timeClass = "DetailsSummary--daypartName--2FBp2"
-url = 'https://weather.com/en-GB/weather/hourbyhour/l/3f32091e89434bd939d19c94aaf7979f6e8da5103246f430d237749302731bfd'
+url = config["place"]
+brigthness = config["brightness"]
 soup = None
 
 def getTimeDict():
@@ -77,9 +81,10 @@ def main():
     updateSoup()#Scrapes the website
     weatherDict = getWeatherDict()
     print(weatherDict)
-    with open('mainTemplate.py', 'r') as file:#replaces the '#REPLACELINE' with the weather dictionary
+    with open('mainTemplate.py', 'r') as file:#replaces the '#REPLACEDICT' with the weather data dictionary
         content = file.read()
-    content = content.replace('#REPLACELINE', f'weatherDict = {weatherDict}')
+    content = content.replace('#REPLACEDICT', f'weatherDict = {weatherDict}')
+    content = content.replace('#REPLACEBRIGHTNESS', f'brightness = {brigthness}')
     with open('main.py', 'a') as file:#makes a new main.py file, and flashes it onto the microbit
         file.write(content)
     uflash.flash('main.py')
