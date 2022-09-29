@@ -101,8 +101,8 @@ TEMPERATURE = 0
 CONDITION = 1
 RAIN = 2
 
-#REPLACEDICT
-#REPLACEBRIGHTNESS
+weatherDict = 'REPLACE'
+brightness = 'REPLACE'
 lowestHour = min(list(weatherDict))
 highestHour = 23
 mode = TEMPERATURE#Chooses whether to display the temperature, condition, or rain chance

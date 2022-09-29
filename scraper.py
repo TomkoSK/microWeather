@@ -83,8 +83,8 @@ def main():
     print(weatherDict)
     with open('mainTemplate.py', 'r') as file:#replaces the '#REPLACEDICT' with the weather data dictionary
         content = file.read()
-    content = content.replace('#REPLACEDICT', f'weatherDict = {weatherDict}')
-    content = content.replace('#REPLACEBRIGHTNESS', f'brightness = {brigthness}')
+    content = content.replace('weatherDict = \'REPLACE\'', f'weatherDict = {weatherDict}')
+    content = content.replace('brightness = \'REPLACE\'', f'brightness = {brigthness}')
     with open('main.py', 'a') as file:#makes a new main.py file, and flashes it onto the microbit
         file.write(content)
     uflash.flash('main.py')
