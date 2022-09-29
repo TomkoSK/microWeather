@@ -8,10 +8,10 @@ with open('config.json', 'r') as file:
     config = json.loads(file.read())
 rainList = ['Rain', 'Scattered Showers', 'Heavy Rain']
 sunList = []
-cloudList = ['Foggy', 'Cloudy', 'Mostly Cloudy Night']
-TEMPERATURE = 1
-RAIN = 2
-CONDITION = 3
+cloudList = ['Foggy', 'Cloudy', 'Mostly Cloudy Night', 'Mostly Cloudy']
+TEMPERATURE = 0
+RAIN = 1
+CONDITION = 2
 temperatureClass = "DetailsSummary--tempValue--1K4ka"
 rainClass = "DetailsSummary--precip--1ecIJ"
 conditionClass = "DetailsSummary--condition--24gQw"
