@@ -1,3 +1,5 @@
+#JUST A PLACEHOLDER FILE SO INTELLISENSE WORKS WITH IDE'S
+
 pin0 = None
 def set_tempo(self, ticks=4, bpm=120):
     "Sets the approximate tempo for playback."
