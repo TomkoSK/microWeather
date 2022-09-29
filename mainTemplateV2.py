@@ -1,5 +1,9 @@
 from microbit import *
 import time
+import music
+
+def buttonSoundEffect():
+    music.pitch(600, 150, wait=False)
 
 def writeDigit(number, x=1):#Displays a digit on the microbit
     if(x == 1):
@@ -130,6 +134,7 @@ while(True):
     if(button_a.is_pressed()):
         if(time.ticks_ms() - buttonPressTime > 400):#Button presses only register every half a second
             buttonPressTime = time.ticks_ms()
+            buttonSoundEffect()
             if(mode < 2):#Changes the mode between temperature, condition and rain chance
                 mode += 1
             else:
@@ -137,6 +142,7 @@ while(True):
     if(button_b.is_pressed()):
         if(time.ticks_ms() - buttonPressTime > 400):#Button presses only register every half a second
             buttonPressTime = time.ticks_ms()
+            buttonSoundEffect()
             if(showingHour):#If the hour is not being shown yet, it will not be changed when the B button is pressed
                 if(hour < 23):#changes the hour that will be shown by 1
                     hour += 1
