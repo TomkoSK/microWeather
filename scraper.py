@@ -16,6 +16,7 @@ temperatureClass = "DetailsSummary--tempValue--1K4ka"
 rainClass = "DetailsSummary--precip--1ecIJ"
 conditionClass = "DetailsSummary--condition--24gQw"
 timeClass = "DetailsSummary--daypartName--2FBp2"
+microbitVersion = config["version"]
 url = config["place"]
 brigthness = config["brightness"]
 soup = None
@@ -81,8 +82,12 @@ def main():
     updateSoup()#Scrapes the website
     weatherDict = getWeatherDict()
     print(weatherDict)
-    with open('mainTemplate.py', 'r') as file:#replaces the '#REPLACEDICT' with the weather data dictionary
-        content = file.read()
+    if(microbitVersion == 'v1'):
+        with open('mainTemplateV1.py', 'r') as file:#replaces the '#REPLACEDICT' with the weather data dictionary
+            content = file.read()
+    elif(microbitVersion == 'v2'):
+        with open('mainTemplateV2.py', 'r') as file:#replaces the '#REPLACEDICT' with the weather data dictionary
+            content = file.read()
     content = content.replace('weatherDict = \'REPLACE\'', f'weatherDict = {weatherDict}')
     content = content.replace('brightness = \'REPLACE\'', f'brightness = {brigthness}')
     with open('main.py', 'a') as file:#makes a new main.py file, and flashes it onto the microbit
